@@ -1,0 +1,7 @@
+{
+  "name": "botanical-garden",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
