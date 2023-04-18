@@ -15,6 +15,7 @@ import { infoDarwinBotanicalGarden, Weekdays } from "../constants";
 // Images
 import { DarwinBotanicalGarden } from "../assets";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
   const [showDetailInfo, setShowDetailInfo] = useState<boolean>(false);
@@ -95,23 +96,24 @@ const Home: React.FC = () => {
           </div>
 
           {/* Upcoming events */}
-          <div className="mt-12">
-            <h2 className="text-[18px] font-semibold ">Upcoming events</h2>
-            <div className="w-full grid grid-rows-1 md:grid-cols-3 gap-4">
-              <EventSmall />
-              <EventSmall />
-              <EventSmall />
-            </div>
-            <div className="w-full mt-4 flex items-center justify-center">
-              <IonButton
-                color="dark"
-                onClick={(e) => {
-                  e.preventDefault();
-                  history.push("/page/events");
-                }}
-              >
-                See all
-              </IonButton>
+          <div className="mt-12 flex ">
+            <div
+              className={`w-full md:w-[30%] border rounded-md bg-gray-100 py-8 px-4`}
+            >
+              <div className="w-full flex justify-between items-center">
+                <h2 className="text-[18px] font-semibold ">Upcoming events</h2>
+                <Link
+                  to="/page/events"
+                  className="hover:text-primary border-b hover:border-b-primary"
+                >
+                  See all
+                </Link>
+              </div>
+              <div className="w-full mt-4 flex flex-col">
+                <EventSmall />
+                <EventSmall />
+                <EventSmall />
+              </div>
             </div>
           </div>
         </div>

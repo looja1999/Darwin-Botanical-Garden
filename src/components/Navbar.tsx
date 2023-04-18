@@ -35,7 +35,7 @@ const Navbar = (props: NavbarProps) => {
                     location.pathname === nav.url
                       ? "text-primary font-bold"
                       : ""
-                  } text-sm p-3`}
+                  } text-sm p-3 font-medium`}
               >
                 {nav.title}
               </NavLink>
