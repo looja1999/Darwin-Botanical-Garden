@@ -11,7 +11,7 @@ type TopNotificationProps = {
 const TopNotificationComponent = (props: TopNotificationProps) => {
   return (
     <div
-      className={`w-full h-[80px] text-[12px] md:text-sm font-semibold ${styles.paddingX} text-center bg-primary ${styles.flexCenter} text-white relative`}
+      className={`w-full h-[80px] text-[12px] md:text-sm font-semibold ${styles.paddingX} bg-primary ${styles.flexCenter} text-white relative`}
     >
       <div className="mt-2">
         {" "}
@@ -19,7 +19,7 @@ const TopNotificationComponent = (props: TopNotificationProps) => {
         the Garden.{" "}
         <Link
           to="/page/Plant-Recognition"
-          className="pb-1 hover:text-dimWhite "
+          className="pb-1 hover:text-dimWhite underline"
         >
           Click Here
         </Link>

@@ -14,6 +14,9 @@ module.exports = {
             },
             fontFamily: {
                 nunito: ["Nunito Sans", "sans-serif"],
+            },
+            backgroundImage: {
+                "botanicalGarden": "url('/src/assets/botanical-garden-background.jpeg')"
             }
         },
         screens: {

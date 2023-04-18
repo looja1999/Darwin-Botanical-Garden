@@ -19,9 +19,9 @@ const Navbar = (props: NavbarProps) => {
   }, [location.pathname]);
 
   return (
-    <nav className={`border-gray-200 w-full`}>
-      <div className={`mx-[64px] flex justify-between items-center`}>
-        <Link to="/page/home" className="flex items-center">
+    <nav className={`border-gray-200 w-full bg-white`}>
+      <div className={`max-w-[1080px] mx-auto flex justify-between items-center`}>
+        <Link to="/page/Home" className="flex items-center">
           <img
             src={Logo}
             className="h-10 mr-3"
@@ -34,13 +34,14 @@ const Navbar = (props: NavbarProps) => {
 
         <ul>
           <li>
-            {navs.map((nav) => (
+            {navs.map((nav, index) => (
               <NavLink
                 to={nav.url}
                 className={`
                   ${
                     active === nav.url ? "text-primary font-bold" : ""
                   } text-sm p-3 font-medium`}
+                key={index}
               >
                 {nav.title}
               </NavLink>
