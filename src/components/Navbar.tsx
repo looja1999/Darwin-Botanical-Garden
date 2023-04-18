@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles";
 import { navs } from "../constants";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { IonList, IonItem, IonLabel, IonNavLink } from "@ionic/react";
+import { Logo } from "../assets";
 
 type NavbarProps = {
   title: string;
@@ -20,16 +21,16 @@ const Navbar = (props: NavbarProps) => {
   return (
     <nav className={`border-gray-200 w-full`}>
       <div className={`mx-[64px] flex justify-between items-center`}>
-        <a href="https://flowbite.com/" className="flex items-center">
+        <Link to="/page/home" className="flex items-center">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8 mr-3"
-            alt="Flowbite Logo"
+            src={Logo}
+            className="h-10 mr-3"
+            alt="Darwin Botanical Garden Logo"
           />
-          <span className="self-center text-2xl font-nunito font-semibold whitespace-nowrap dark:text-white">
+          <span className="self-center text-xl font-nunito font-semibold whitespace-nowrap dark:text-white">
             Darwin Botanical Garden
           </span>
-        </a>
+        </Link>
 
         <ul>
           <li>
