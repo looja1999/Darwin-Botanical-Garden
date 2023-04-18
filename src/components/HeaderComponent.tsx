@@ -6,12 +6,21 @@ import {
   IonTitle,
 } from "@ionic/react";
 import Navbar from "./Navbar";
+import TopNotificationComponent from "./TopNotificationComponent";
+import { useState } from "react";
 
 type HeaderProps = {
   title: string;
 };
 
 const Header = (props: HeaderProps) => {
+  const [showNotification, setShowNotification] = useState<boolean>(true);
+
+
+  const showNotificationHandler = () => {
+    setShowNotification((prev:any) => !prev);
+  };
+
   return (
     <IonHeader>
       <IonToolbar className="md:hidden">
@@ -24,6 +33,9 @@ const Header = (props: HeaderProps) => {
       <IonToolbar className="hidden md:block">
         <Navbar title="Home" />
       </IonToolbar>
+      {showNotification && <TopNotificationComponent onClickProps={() => {
+              showNotificationHandler();
+            }} />}
     </IonHeader>
   );
 };

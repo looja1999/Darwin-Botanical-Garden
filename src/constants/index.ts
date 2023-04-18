@@ -42,3 +42,6 @@ export const navs = [
     url: "/page/Login",
   },
 ];
+
+
+export const PLANT_ID_API = 'https://plant.id/api/v2'

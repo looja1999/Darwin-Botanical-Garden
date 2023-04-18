@@ -27,7 +27,7 @@ const Navbar = (props: NavbarProps) => {
             className="h-10 mr-3"
             alt="Darwin Botanical Garden Logo"
           />
-          <span className="self-center text-xl font-nunito font-semibold whitespace-nowrap dark:text-white">
+          <span className="self-center text-xl font-nunito font-semibold whitespace-nowrap dark:text-white hover:text-primary">
             Darwin Botanical Garden
           </span>
         </Link>

@@ -6,12 +6,10 @@ import {
   locationSharp,
   timeSharp,
 } from "ionicons/icons";
-import React from "react";
-import { Link } from "react-router-dom";
 
 const EventSmall = () => {
   return (
-    <div className="w-full mt-3 bg-dimWhite flex flex-col gap-2 p-3 rounded-md border-2 cursor-pointer hover:border-2 hover:border-primary">
+    <div className="w-full mt-3 bg-white flex flex-col gap-2 p-3 rounded-md border-2 cursor-pointer hover:border-2 hover:border-primary">
       <h2 className="text-md font-semibold ">Botanical Garden Tour</h2>
 
       <div className="flex flex-col jusity-start items-start gap-1">
