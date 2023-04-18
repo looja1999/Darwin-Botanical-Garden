@@ -77,7 +77,7 @@ const Menu: React.FC = () => {
   const location = useLocation();
 
   return (
-    <IonMenu contentId="main" type="overlay">
+    <IonMenu contentId="main" type="push" className="md:hidden">
       <IonContent>
         <IonList id="inbox-list">
           <IonListHeader>Darwin Botanical Garden</IonListHeader>

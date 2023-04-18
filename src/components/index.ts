@@ -3,6 +3,7 @@ import HeaderComponent from "./HeaderComponent";
 import Menu from "./Menu";
 import TopNotificationComponent from "./TopNotificationComponent";
 import EventSmall from "./EventSmall";
+import Navbar from "./Navbar";
 
 export {
   ExploreContainer,
@@ -10,4 +11,5 @@ export {
   HeaderComponent,
   TopNotificationComponent,
   EventSmall,
+  Navbar,
 };

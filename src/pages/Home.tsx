@@ -4,6 +4,9 @@ import {
   HeaderComponent,
   TopNotificationComponent,
 } from "../components";
+import { useHistory } from "react-router";
+
+// Style sheet
 import styles from "../styles";
 
 // Constants
@@ -16,6 +19,8 @@ import { useState } from "react";
 const Home: React.FC = () => {
   const [showDetailInfo, setShowDetailInfo] = useState<boolean>(false);
   const [showNotification, setShowNotification] = useState<boolean>(true);
+
+  const history = useHistory();
 
   const showNotificationHandler = () => {
     setShowNotification((prev) => !prev);
@@ -92,11 +97,21 @@ const Home: React.FC = () => {
           {/* Upcoming events */}
           <div className="mt-12">
             <h2 className="text-[18px] font-semibold ">Upcoming events</h2>
-            <div className="w-full mt-4 grid grid-rows-1 md:grid-cols-3 gap-4">
+            <div className="w-full grid grid-rows-1 md:grid-cols-3 gap-4">
               <EventSmall />
               <EventSmall />
               <EventSmall />
-              <EventSmall />
+            </div>
+            <div className="w-full mt-4 flex items-center justify-center">
+              <IonButton
+                color="dark"
+                onClick={(e) => {
+                  e.preventDefault();
+                  history.push("/page/events");
+                }}
+              >
+                See all
+              </IonButton>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import {
   IonMenuButton,
   IonTitle,
 } from "@ionic/react";
+import Navbar from "./Navbar";
 
 type HeaderProps = {
   title: string;
@@ -13,11 +14,15 @@ type HeaderProps = {
 const Header = (props: HeaderProps) => {
   return (
     <IonHeader>
-      <IonToolbar>
+      <IonToolbar className="md:hidden">
         <IonButtons slot="start">
           <IonMenuButton />
         </IonButtons>
         <IonTitle>{props.title}</IonTitle>
+      </IonToolbar>
+
+      <IonToolbar className="hidden md:block">
+        <Navbar title="Home" />
       </IonToolbar>
     </IonHeader>
   );

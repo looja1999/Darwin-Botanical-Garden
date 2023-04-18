@@ -15,3 +15,30 @@ export const Weekdays: string[] = [
   "Saturday",
   "Sunday",
 ];
+
+export const navs = [
+  {
+    title: "Home",
+    url: "/page/Home",
+  },
+  {
+    title: "Events",
+    url: "/page/Events",
+  },
+  {
+    title: "Tours",
+    url: "/page/Tours",
+  },
+  {
+    title: "Plant Index",
+    url: "/page/Plant-Index",
+  },
+  {
+    title: "Plant Recognition",
+    url: "/page/Plant-Recognition",
+  },
+  {
+    title: "Staff login",
+    url: "/page/login",
+  },
+];
