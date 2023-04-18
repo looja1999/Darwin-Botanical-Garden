@@ -98,12 +98,12 @@ const Home: React.FC = () => {
           {/* Upcoming events */}
           <div className="mt-12 flex ">
             <div
-              className={`w-full md:w-[30%] border rounded-md bg-gray-100 py-8 px-4`}
+              className={`w-full md:w-[30%] border rounded-md bg-gray-50 py-8 px-4`}
             >
               <div className="w-full flex justify-between items-center">
                 <h2 className="text-[18px] font-semibold ">Upcoming events</h2>
                 <Link
-                  to="/page/events"
+                  to="/page/Events"
                   className="hover:text-primary border-b hover:border-b-primary"
                 >
                   See all
@@ -117,8 +117,6 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* Camera */}
       </IonContent>
     </IonPage>
   );

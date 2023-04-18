@@ -39,23 +39,23 @@ const App: React.FC = () => {
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
-            <Route path="/page/home" exact={true}>
+            <Route path="/page/Home" exact={true}>
               <Home />
             </Route>
-            <Route path="/page/tours" exact={true}>
+            <Route path="/page/Tours" exact={true}>
               <Tours />
             </Route>
-            <Route path="/page/events" exact={true}>
+            <Route path="/page/Events" exact={true}>
               <Events />
             </Route>
-            <Route path="/page/plant-index" exact={true}>
+            <Route path="/page/Plant-Index" exact={true}>
               <PlantIndex />
             </Route>
-            <Route path="/page/plant-recognition" exact={true}>
+            <Route path="/page/Plant-Recognition" exact={true}>
               <PlantRecognition />
             </Route>
             <Route path="/" exact={true}>
-              <Redirect to="/page/home" />
+              <Redirect to="/page/Home" />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>

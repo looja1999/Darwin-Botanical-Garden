@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles";
 import { navs } from "../constants";
 import { NavLink, useLocation } from "react-router-dom";
@@ -9,7 +9,13 @@ type NavbarProps = {
 };
 
 const Navbar = (props: NavbarProps) => {
+  const [active, setActive] = useState("");
+
   const location = useLocation();
+
+  useEffect(() => {
+    setActive(location.pathname);
+  }, [location.pathname]);
 
   return (
     <nav className={`border-gray-200 w-full`}>
@@ -32,9 +38,7 @@ const Navbar = (props: NavbarProps) => {
                 to={nav.url}
                 className={`
                   ${
-                    location.pathname === nav.url
-                      ? "text-primary font-bold"
-                      : ""
+                    active === nav.url ? "text-primary font-bold" : ""
                   } text-sm p-3 font-medium`}
               >
                 {nav.title}

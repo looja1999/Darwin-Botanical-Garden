@@ -39,6 +39,6 @@ export const navs = [
   },
   {
     title: "Staff login",
-    url: "/page/login",
+    url: "/page/Login",
   },
 ];

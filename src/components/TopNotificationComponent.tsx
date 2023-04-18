@@ -11,15 +11,15 @@ type TopNotificationProps = {
 const TopNotificationComponent = (props: TopNotificationProps) => {
   return (
     <div
-      className={`w-full h-[80px] text-[12px] font-semibold ${styles.paddingX} text-center bg-tertiary ${styles.flexCenter} text-dimWhite relative`}
+      className={`w-full h-[80px] text-[12px] md:text-sm font-semibold ${styles.paddingX} text-center bg-primary ${styles.flexCenter} text-white relative`}
     >
       <div className="mt-2">
         {" "}
         We added plant recongition technology to help you know about plants in
         the Garden.{" "}
         <Link
-          to="/page/plant-recognition"
-          className="border-b pb-1 border-dimWhite"
+          to="/page/Plant-Recognition"
+          className="pb-1 hover:text-dimWhite "
         >
           Click Here
         </Link>
