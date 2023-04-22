@@ -45,15 +45,14 @@ export const usePhotoGallery = () => {
 
     const fileName = new Date().getTime() + ".jpeg";
 
-
     // const saveFileImage = {filepath: fileName, webviewPath: photo.webPath}
     const savedFileImage = await savePhoto(photo, fileName);
 
-    console.log("file: usePhotoGallery, line 24, ", savedFileImage);
+    console.log("Line 51 saved file image", savedFileImage.webviewPath);
 
     setPhotos([savedFileImage, ...photos]);
 
-    return {photos, takePhoto};
+    return { photos, takePhoto };
   };
 
   const savePhoto = async (
@@ -65,7 +64,7 @@ export const usePhotoGallery = () => {
     if (isPlatform("hybrid")) {
       const file = await Filesystem.readFile({
         path: photo.path!,
-        directory: Directory.Data
+        directory: Directory.Data,
       });
       base64Data = file.data;
     } else {

@@ -20,7 +20,9 @@ const Navbar = (props: NavbarProps) => {
 
   return (
     <nav className={`border-gray-200 w-full bg-white`}>
-      <div className={`max-w-[1080px] mx-auto flex justify-between items-center`}>
+      <div
+        className={`max-w-[1080px] mx-auto flex justify-between items-center`}
+      >
         <Link to="/page/Home" className="flex items-center">
           <img
             src={Logo}
@@ -32,7 +34,7 @@ const Navbar = (props: NavbarProps) => {
           </span>
         </Link>
 
-        <ul>
+        <ul className="">
           <li>
             {navs.map((nav, index) => (
               <NavLink

@@ -13,27 +13,25 @@ import styles from "../styles";
 // Constants
 import { infoDarwinBotanicalGarden, Weekdays } from "../constants";
 
-
 import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
-
   return (
     <IonPage>
       <HeaderComponent title="Home" />
       <IonContent fullscreen className="font-nunito">
-
         <Hero />
 
         <div className={`${styles.marginY} ${styles.paddingX}`}>
-          
           {/* Upcoming events */}
           <div className="mt-12 max-w-[1080px] mx-auto flex flex-col md:flex-row gap-8 md:gap-2 justify-between items-stretch">
             <div
               className={`w-full md:w-[30%] border rounded-md bg-gray-50 py-8 px-4`}
             >
               <div className="w-full flex justify-between items-center">
-                <h2 className="text-[18px] font-bold text-primary">Upcoming events</h2>
+                <h2 className="text-[18px] font-bold text-primary">
+                  Upcoming events
+                </h2>
                 <Link
                   to="/page/Events"
                   className="hover:text-primary border-b hover:border-b-primary"
@@ -49,9 +47,11 @@ const Home: React.FC = () => {
             </div>
             <div className="w-full md:w-[65%] border rounded-md bg-gray-50 py-8 px-4">
               <div className="w-full flex justify-between items-center">
-                <h2 className="text-[18px] font-bold text-primary">Opening Hours</h2>
+                <h2 className="text-[18px] font-bold text-primary">
+                  Opening Hours
+                </h2>
               </div>
-              
+
               <div className="w-full mt-8 cursor-auto">
                 {Weekdays.map((weekday: string, index: number) => (
                   <div

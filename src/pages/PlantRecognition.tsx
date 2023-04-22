@@ -1,154 +1,110 @@
 import { IonPage, IonContent, IonButton, IonIcon, IonImg } from "@ionic/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HeaderComponent } from "../components";
 import styles from "../styles";
 import { cameraOutline, cameraSharp } from "ionicons/icons";
 import { usePhotoGallery } from "../hooks/usePhotoGallery";
-import { PLANT_ID_API } from "../constants";
 
 const PlantRecognition: React.FC = () => {
-  const { photos, takePhoto, deletePhoto } = usePhotoGallery();
+  const { photos, takePhoto } = usePhotoGallery();
+  const [image, setImage] = useState<any>("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const onPlantRecognitionButtonClick = () => {
-    const str = photos[0].webviewPath;
+  useEffect(() => {
+    setImage(photos[0]?.webviewPath);
+    onPlantRecognitionButtonClick();
+  }, [photos[0]?.webviewPath]);
 
-    console.log(typeof(str))
+  const onPlantRecognitionButtonClick = async () => {
+    const url = photos[0].webviewPath;
 
-    function createBlobFromData(data:any) {
-      if (typeof data === "string" || data instanceof ArrayBuffer || data instanceof Blob) {
-        return new Blob([data], { type: "application/octet-stream" });
-      } else {
-        throw new Error("Invalid data type");
-      }
-    }
+    setImage(url);
 
-    function convertBlobToBase64(blob:any) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onerror = reject;
-        reader.onload = () => {
-          const base64String = reader.result ? reader.result.slice(37) : '';
-          resolve(base64String);
+    const blobToBase64 = (url: any) => {
+      return new Promise(async (resolve, _) => {
+        // do a request to the blob uri
+        const response = await fetch(url);
+
+        // response has a method called .blob() to get the blob file
+        const blob = await response.blob();
+
+        // instantiate a file reader
+        const fileReader = new FileReader();
+
+        // read the file
+        fileReader.readAsDataURL(blob);
+
+        fileReader.onloadend = function () {
+          resolve(fileReader.result); // Here is the base64 string
         };
-        reader.readAsDataURL(blob); 
       });
-    }
-    const blob = createBlobFromData(str)
+    };
 
-    const base64 = convertBlobToBase64(blob)
-    .then(base64String => console.log(base64String))
-    .catch(error => console.error(error));
+    // now you can get the
+    blobToBase64(url).then((base64String) => {
+      console.log(base64String); // i.e: data:image/jpeg;base64,/9j/4AAQSkZJ..
+    });
 
-    fetch('https://plant.id/api/v2', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            'API-Key': 'MXbko2p8005enYkDjDLdtPRr3PsyXZtZMYZnPKjVbXLl2N8ADg'
-          },
-          body: JSON.stringify({
-            images: [base64]
-          })
-        })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
+    // or with await/async
+    const file = await blobToBase64(url);
 
+    const data = {
+      api_key: "MXbko2p8005enYkDjDLdtPRr3PsyXZtZMYZnPKjVbXLl2N8ADg",
+      images: [file],
+      // modifiers docs: https://github.com/flowerchecker/Plant-id-API/wiki/Modifiers
+      modifiers: ["crops_fast", "similar_images"],
+      plant_language: "en",
+      // plant details docs: https://github.com/flowerchecker/Plant-id-API/wiki/Plant-details
+      plant_details: [
+        "common_names",
+        "url",
+        "name_authority",
+        "wiki_description",
+        "taxonomy",
+        "synonyms",
+      ],
+    };
 
-
-
-    // let blobParts = str ? [str] : []; // Only add the string to the array if it's defined
-    // let blob = new Blob(blobParts, { type: 'text/plain' });
-
-    // console.log(blob)
-
-    // let reader = new FileReader();
-
-    // reader.readAsDataURL(blob);
-
-    // reader.onload = function() {
-    //   let base64data = reader.result;
-
-    //   fetch('https://plant.id/api/v2', {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'multipart/form-data'
-    //       },
-    //       body: JSON.stringify({
-    //         api_key: 'MXbko2p8005enYkDjDLdtPRr3PsyXZtZMYZnPKjVbXLl2N8ADg',
-    //         images: [base64data]
-    //       })
-    //     })
-    //     .then(response => response.json())
-    //     .then(data => console.log(data))
-    //     .catch(error => console.error(error));
-
-    // };
-
-    // reader.readAsDataURL(blob);
-
-    // reader.onload = function() {
-    //   let base64data = reader.result;
-    //   console.log(base64data);
-    // };
-
-    // let reader = new FileReader();
-
-    // reader.readAsDataURL(path);
-
-    // reader.onload = function() {
-    //   let base64data = reader.result.split(',')[1];
-    //   console.log(base64data);
-    // };
-
-
-    // fetch(path)
-    //   .then(response => response.blob())
-    //   .then(blob => {
-    //     // Convert blob to base64 data
-    //     const reader = new FileReader();
-    //       reader.readAsDataURL(blob);
-    //       reader.onload = function() {
-    //         let base64data = reader.result.split(',')[1];
-    //         console.log(base64data);
-    //       };
-
-    //         // const base64data = JSON.stringify([reader.result]);
-    //         // console.log(base64data)
-            
-    //         // fetch(PLANT_ID_API, {
-    //         //   method: "POST",
-    //         //   body: JSON.stringify({
-    //         //     'images':base64data,
-    //         //     'key': 'MXbko2p8005enYkDjDLdtPRr3PsyXZtZMYZnPKjVbXLl2N8ADg'
-    //         //   })
-    //         // }).then(res => res.json()).then(data => console.log(data)).catch(err => console.error(err))
-       
-    //       };
-    //   })
-    //   .catch(error => {
-    //     console.error(error);
-    //   });
-  }
-
+    fetch("https://api.plant.id/v2/identify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   return (
     <IonPage>
       <HeaderComponent title="Plant Recognition" />
-      <IonContent fullscreen>
-        <div className={`${styles.marginY} ${styles.paddingX}`}>
+      <IonContent fullscreen className="ion-padding">
+        <div className={`mt-4 md:mt-8 w-full max-w-[1080px] mx-auto`}>
           <p>
             This new feature helps you to identify plants using your mobile's
             camera.
           </p>
+
+          <img src={image} />
+
           <IonButton className="mt-4" expand="full" onClick={takePhoto}>
             <IonIcon ios={cameraOutline} md={cameraSharp} className="mr-4" />
-            Open Camera
+            Photo Recognition
           </IonButton>
-          <IonButton className="mt-4" expand="full" onClick={onPlantRecognitionButtonClick}>
-            Plant Recognition
-          </IonButton>
-          
 
+          {/* <IonButton
+            className="mt-4"
+            expand="full"
+            onClick={onPlantRecognitionButtonClick}
+          >
+            Plant Recognition
+          </IonButton> */}
         </div>
       </IonContent>
     </IonPage>
