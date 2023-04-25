@@ -3,5 +3,6 @@ import Events from "./Events";
 import Tours from "./Tours";
 import PlantIndex from "./PlantIndex";
 import PlantRecognition from "./PlantRecognition";
+import Login from "./Login";
 
-export { Home, Events, Tours, PlantIndex, PlantRecognition };
+export { Home, Events, Tours, PlantIndex, PlantRecognition, Login };

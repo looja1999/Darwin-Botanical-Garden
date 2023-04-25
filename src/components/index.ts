@@ -13,5 +13,5 @@ export {
   TopNotificationComponent,
   EventSmall,
   Navbar,
-  Hero
+  Hero,
 };

@@ -28,7 +28,14 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 
 // Pages import
-import { Home, Events, Tours, PlantIndex, PlantRecognition } from "./pages";
+import {
+  Home,
+  Events,
+  Tours,
+  PlantIndex,
+  PlantRecognition,
+  Login,
+} from "./pages";
 
 setupIonicReact();
 
@@ -53,6 +60,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/page/Plant-Recognition" exact={true}>
               <PlantRecognition />
+            </Route>
+            <Route path="/page/Login" exact={true}>
+              <Login />
             </Route>
             <Route path="/" exact={true}>
               <Redirect to="/page/Home" />

@@ -61,7 +61,7 @@ const appPages: AppPage[] = [
   },
   {
     title: "Staff login",
-    url: "/page/login",
+    url: "/page/Login",
     iosIcon: logInOutline,
     mdIcon: logInSharp,
   },

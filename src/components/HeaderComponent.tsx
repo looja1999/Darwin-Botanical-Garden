@@ -8,6 +8,7 @@ import {
 import Navbar from "./Navbar";
 import TopNotificationComponent from "./TopNotificationComponent";
 import { useState } from "react";
+import { useLocation } from "react-router";
 
 type HeaderProps = {
   title: string;
@@ -15,10 +16,10 @@ type HeaderProps = {
 
 const Header = (props: HeaderProps) => {
   const [showNotification, setShowNotification] = useState<boolean>(true);
-
+  const location = useLocation();
 
   const showNotificationHandler = () => {
-    setShowNotification((prev:any) => !prev);
+    setShowNotification((prev: any) => !prev);
   };
 
   return (
@@ -33,9 +34,13 @@ const Header = (props: HeaderProps) => {
       <IonToolbar className="hidden md:block">
         <Navbar title="Home" />
       </IonToolbar>
-      {showNotification && <TopNotificationComponent onClickProps={() => {
-              showNotificationHandler();
-            }} />}
+      {showNotification && location.pathname === "/page/Home" && (
+        <TopNotificationComponent
+          onClickProps={() => {
+            showNotificationHandler();
+          }}
+        />
+      )}
     </IonHeader>
   );
 };
