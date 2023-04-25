@@ -34,7 +34,7 @@ const Navbar = (props: NavbarProps) => {
           </span>
         </Link>
 
-        <ul className="">
+        <ul className="transition-all ease-in-out">
           <li>
             {navs.map((nav, index) => (
               <NavLink
@@ -42,7 +42,7 @@ const Navbar = (props: NavbarProps) => {
                 className={`
                   ${
                     active === nav.url ? "text-primary font-bold" : ""
-                  } text-sm p-3 font-medium`}
+                  } text-sm p-3 font-medium border-b-2 border-white hover:border-primary`}
                 key={index}
               >
                 {nav.title}

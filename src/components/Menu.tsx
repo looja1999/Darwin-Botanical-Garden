@@ -54,12 +54,6 @@ const appPages: AppPage[] = [
     mdIcon: navigateSharp,
   },
   {
-    title: "Plant Index",
-    url: "/page/Plant-Index",
-    iosIcon: leafOutline,
-    mdIcon: leafSharp,
-  },
-  {
     title: "Plant Recognition",
     url: "/page/Plant-Recognition",
     iosIcon: cameraOutline,

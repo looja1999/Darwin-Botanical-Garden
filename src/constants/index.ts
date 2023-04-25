@@ -30,10 +30,6 @@ export const navs = [
     url: "/page/Tours",
   },
   {
-    title: "Plant Index",
-    url: "/page/Plant-Index",
-  },
-  {
     title: "Plant Recognition",
     url: "/page/Plant-Recognition",
   },
@@ -43,5 +39,4 @@ export const navs = [
   },
 ];
 
-
-export const PLANT_ID_API = 'https://plant.id/api/v2'
+export const PLANT_ID_API = "https://plant.id/api/v2";
