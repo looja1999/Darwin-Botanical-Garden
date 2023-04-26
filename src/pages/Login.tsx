@@ -49,7 +49,7 @@ const Login = () => {
       <HeaderComponent title="Login" />
       <div className="h-full w-full">
         <div
-          className={`h-full w-full md:w-[400px] mx-auto ${styles.padding} md:p-0 flex flex-col gap-6 items-center justify-center`}
+          className={`h-full w-full mt-[-40px] md:w-[400px] mx-auto ${styles.padding} md:p-0 flex flex-col gap-6 items-center justify-center`}
         >
           <h1 className="font-nunito font-semibold text-xl text-primary">
             Staff Portal
@@ -80,7 +80,7 @@ const Login = () => {
               onIonInput={(event) => validatePass(event)}
               onIonBlur={() => passwordMarkTouched()}
             ></IonInput>
-            <IonButton>Login</IonButton>
+            <IonButton expand="full">Login</IonButton>
           </form>
         </div>
       </div>
