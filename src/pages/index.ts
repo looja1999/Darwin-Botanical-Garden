@@ -5,5 +5,15 @@ import PlantIndex from "./PlantIndex";
 import PlantRecognition from "./PlantRecognition";
 import Login from "./Login";
 import AdminHomePage from "./AdminHomePage";
+import Tour from "./Tour";
 
-export { Home, Events, Tours, PlantIndex, PlantRecognition, Login, AdminHomePage };
+export {
+  Home,
+  Events,
+  Tours,
+  PlantIndex,
+  PlantRecognition,
+  Login,
+  AdminHomePage,
+  Tour,
+};

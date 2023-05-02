@@ -36,6 +36,7 @@ import {
   PlantRecognition,
   Login,
   AdminHomePage,
+  Tour,
 } from "./pages";
 
 setupIonicReact();
@@ -62,6 +63,9 @@ const App: React.FC = () => {
             <Route path="/page/Plant-Recognition" exact={true}>
               <PlantRecognition />
             </Route>
+            <Route path="/page/Tours/:tour" exact={true}>
+              <Tour />
+            </Route>
             <Route path="/page/Login" exact={true}>
               <Login />
             </Route>
@@ -69,7 +73,7 @@ const App: React.FC = () => {
               <Redirect to="/page/Home" />
             </Route>
             <Route path="/page/Login/AdminHomePage" exact={true}>
-             <AdminHomePage/>
+              <AdminHomePage />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>

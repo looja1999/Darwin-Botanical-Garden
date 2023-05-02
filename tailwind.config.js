@@ -16,7 +16,10 @@ module.exports = {
                 nunito: ["Nunito Sans", "sans-serif"],
             },
             backgroundImage: {
-                "botanicalGarden": "url('/src/assets/botanical-garden-background.jpeg')"
+                "botanicalGarden": "url('/src/assets/botanical-garden-background.jpeg')",
+                "PlacesOfInterest": "url('/src/assets/places-of-interest.jpeg')",
+                "TreeWalk": "url('/src/assets/tree-walk.jpeg')",
+                "MatboerrmaWalk": "url('/src/assets/matboerrma-walk.jpeg')"
             }
         },
         screens: {
