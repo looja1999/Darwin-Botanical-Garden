@@ -6,6 +6,8 @@ import PlantRecognition from "./PlantRecognition";
 import Login from "./Login";
 import AdminHomePage from "./AdminHomePage";
 import Tour from "./Tour";
+import AddEditEvent from "./AddEditEvent";
+import AddEditPlant from "./AddEditPlant";
 
 export {
   Home,
@@ -16,4 +18,6 @@ export {
   Login,
   AdminHomePage,
   Tour,
+  AddEditEvent,
+  AddEditPlant
 };

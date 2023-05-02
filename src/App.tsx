@@ -37,6 +37,8 @@ import {
   Login,
   AdminHomePage,
   Tour,
+  AddEditEvent,
+  AddEditPlant,
 } from "./pages";
 
 setupIonicReact();
@@ -74,6 +76,12 @@ const App: React.FC = () => {
             </Route>
             <Route path="/page/Login/AdminHomePage" exact={true}>
               <AdminHomePage />
+            </Route>
+            <Route path="/page/Login/AdminHomePage/AddEditEvent" exact={true}>
+              <AddEditEvent />
+            </Route>
+            <Route path="/page/Login/AdminHomePage/AddEditPlant" exact={true}>
+              <AddEditPlant />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>
