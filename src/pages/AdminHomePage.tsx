@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from 'react-router-dom';
+import styles from "../styles";
 import {
   IonButton,
   IonPage,
@@ -20,7 +21,7 @@ const AdminHomePage = () => {
       <HeaderComponent title="Admin Home" />
       <div className="container">
         <header>
-          <h1>Welcome to Admin Page</h1>
+        <h1 className="text-xl md:text-2xl font-bold">Welcome to our Admin Page</h1>
           <IonButton onClick={handleAddEventClick}>Add Event</IonButton>
           <IonButton onClick={handleEditEventPlant}>Add Plant</IonButton>
         </header>
