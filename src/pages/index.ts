@@ -8,6 +8,9 @@ import AdminHomePage from "./AdminHomePage";
 import Tour from "./Tour";
 import AddEditEvent from "./AddEditEvent";
 import AddEditPlant from "./AddEditPlant";
+import ViewEvent from "./ViewEvent";
+import ViewPlant from "./ViewPlant";
+import UpdateEvent from "./UpdateEvent";
 
 export {
   Home,
@@ -19,5 +22,8 @@ export {
   AdminHomePage,
   Tour,
   AddEditEvent,
-  AddEditPlant
+  AddEditPlant,
+  ViewEvent,
+  ViewPlant,
+  UpdateEvent,
 };

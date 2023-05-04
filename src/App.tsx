@@ -27,6 +27,9 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
+
+import "./CustomUI.css";
+
 // Pages import
 import {
   Home,
@@ -39,6 +42,9 @@ import {
   Tour,
   AddEditEvent,
   AddEditPlant,
+  ViewEvent,
+  ViewPlant,
+  UpdateEvent,
 } from "./pages";
 
 setupIonicReact();
@@ -78,10 +84,19 @@ const App: React.FC = () => {
               <AdminHomePage />
             </Route>
             <Route path="/page/Login/AdminHomePage/AddEditEvent" exact={true}>
-              <AddEditEvent />
+              <AddEditEvent/>
             </Route>
             <Route path="/page/Login/AdminHomePage/AddEditPlant" exact={true}>
               <AddEditPlant />
+              </Route>
+            <Route path="/page/Login/AdminHomePage/ViewEvent" exact={true}>
+              <ViewEvent />
+            </Route>
+            <Route path="/page/Login/AdminHomePage/ViewPlant" exact={true}>
+              <ViewPlant />
+            </Route>
+            <Route path="/page/Login/AdminHomePage/UpdateEvent" exact={true}>
+              <UpdateEvent />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>

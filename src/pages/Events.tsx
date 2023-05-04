@@ -1,4 +1,4 @@
-import { IonPage, IonContent, IonDatetimeButton, IonModal } from "@ionic/react";
+import { IonPage, IonContent, IonDatetimeButton, IonModal, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent } from "@ionic/react";
 import { EventSmall, HeaderComponent } from "../components";
 import React, { useState, useEffect } from "react";
 import styles from "../styles";
@@ -18,7 +18,7 @@ interface Event {
 const Events: React.FC = () => {
   const [event, setEvent] = useState<Event[]>([]);
   const eventCollectionRef = collection(db, "Events");
-  const myDate = new Date("2023-05-02T15:22:00Z");
+  // const myDate = new Date("2023-05-02T15:22:00Z");
 
   useEffect(() => {
     const getEvent = async () => {
@@ -29,6 +29,7 @@ const Events: React.FC = () => {
     getEvent();
   }, []);
   
+//Design 
 return (
 <IonPage>
 <HeaderComponent title="Events" />

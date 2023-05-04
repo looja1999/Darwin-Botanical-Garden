@@ -1,7 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 const config={
     apiKey: "AIzaSyDy3o7gJB62w-sOH_Msnqd0lUTmiw19bDY",
@@ -13,7 +14,7 @@ const config={
     appId: "1:305444237733:web:cb6a1aabdda83f93fe384c"
   };
 
-  const app = initializeApp(config);
+  export const app = initializeApp(config);
   export const db = getFirestore(app);
 
   const auth = getAuth();
