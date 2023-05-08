@@ -11,6 +11,9 @@ import {
   IonGrid,
   IonRow,
   IonCol,
+  IonItem,
+  IonLabel,
+  IonSpinner,
 } from "@ionic/react";
 import { EventSmall, HeaderComponent } from "../components";
 import React, { useState, useEffect } from "react";
@@ -73,13 +76,18 @@ const handleDelete = async (id: string) => {
       }
 
     const [event, setEvent] = useState<Event[]>([]);
+    const [isLoading, setIsLoading] = useState(false); 
+
+
     const eventCollectionRef = collection(db, "Events");
     // const myDate = new Date("2023-05-02T15:22:00Z");
   
     useEffect(() => {
       const getEvent = async () => {
+        setIsLoading(true);
         const data = await getDocs(eventCollectionRef);
-        setEvent(data.docs.map((doc) => ({...doc.data(), id: doc.id})) as Event[]);
+        await setEvent(data.docs.map((doc) => ({...doc.data(), id: doc.id})) as Event[]);
+        setIsLoading(false);
       };
   
       getEvent();
@@ -90,10 +98,45 @@ const handleDelete = async (id: string) => {
   <IonPage>
   <HeaderComponent title="Events" />
   <IonContent fullscreen>
-  <IonContent>
+        <div className="w-full md:w-[1080px] mt-4 md:mt-8 mx-auto p-4 md:p-0">
+            <div className="overflow-x-scroll md:overflow-x-hidden w-full">
+                <table className="w-full ">
+                    <tr>
+                        <th className="border p-4">Title</th>
+                        <th className="border p-4">Description</th>
+                        <th className="border p-4">Location</th>
+                        <th className="border p-4">Date</th>
+                        <th className="border p-4">Time</th>
+                        <th className="border p-4">Edit</th>
+                    </tr>
+                    { !isLoading && 
+                        event.map((Event) => {
+                        return (
+                            <tr>
+                                <td className="border p-4">{Event.Title}</td>
+                                <td className="border p-4">{Event.Description}</td>
+                                <td className="border p-4">{Event.Location}</td>
+                                <td className="border p-4">{Event.Date}</td>
+                                <td className="border p-4">{Event.Time}</td>
+                                <td className="border p-4">
+                                {/* <IonButton onClick={() => handleUpdate(Event.id,Event.Title,Event.Description,Event.Location,Event.Date,Event.Time)}>Edit</IonButton> */}
+                                <IonButton onClick={() => history.push(`/page/Login/AdminHomePage/UpdateEvent/${Event.id}`)}>Edit</IonButton>
+                                <IonButton onClick={() => handleDelete(Event.id)}>Delete</IonButton></td>
+                            </tr>
+                        )
+                    })}
+                </table>
+                {isLoading && <div className="w-[100%] flex items-center justify-center p-10">
+                  <IonSpinner name="circular"></IonSpinner>
+                </div>}
+
+            </div>
+            
+        </div>
+       
       
           {/* Table Headers */}
-          <IonRow className="table-row">
+          {/* <IonRow className="table-row">
             <IonCol className="table-cell"> 
               <IonText>Title</IonText>
             </IonCol>
@@ -115,9 +158,9 @@ const handleDelete = async (id: string) => {
             <IonCol className="table-cell">
               <IonText>Delete</IonText>
             </IonCol>
-          </IonRow>
+          </IonRow> */}
           {/* Table Rows */}
-
+{/* 
           <div className="Events">
         {event.map((Events) => {
           return (
@@ -139,22 +182,21 @@ const handleDelete = async (id: string) => {
               <IonText>{Events.Time}</IonText>
             </IonCol>
             <IonCol className="table-cell">
-              {/* <IonText>Row 1, Column 6</IonText> */}
+           
             <IonButton onClick={() => handleUpdate(Events.id,Events.Title,Events.Description,Events.Location,Events.Date,Events.Time)}>Edit</IonButton>
             </IonCol>
             <IonCol className="table-cell">
-              {/* <IonText>Row 1, Column 7</IonText> */}
               <IonButton onClick={() => handleDelete(Events.id)}>Delete</IonButton>
             </IonCol>
           </IonRow>
             </div>
           );
         })}
-      </div>
+      </div> */}
 
           {/* Add more rows as needed */}
         {/* </IonGrid> */}
-      </IonContent>
+      
   {/* <div
     className={`max-w-[1080px] h-full ${styles.paddingX} ${styles.paddingY} md:p-0 mt-4 md:mt-10 mx-auto font-nunito`}>
     <h1 className="text-xl md:text-2xl font-bold">Whats on</h1>

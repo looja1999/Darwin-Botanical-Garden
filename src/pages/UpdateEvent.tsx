@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 
 import {
   IonButton,
@@ -15,22 +15,20 @@ import { HeaderComponent } from "../components";
 import styles from "../styles";
 import { addDoc, collection } from "firebase/firestore/lite";
 import { db } from "../firebaseConfig";
-// import './styles.css';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import { doc, updateDoc, deleteField, DocumentData, DocumentReference } from "firebase/firestore";
+import { doc, updateDoc, deleteField, DocumentData, DocumentReference, setDoc, getDoc, getDocs, getFirestore } from "firebase/firestore";
+import { compassSharp } from "ionicons/icons";
 
 
 
 const UpdateEvent = () => {
 
 
+    const history = useHistory();
 
     const location = useLocation();
-    const data: any  = location.state
-
-  
 
     const [newTitle, setNewTitle] = useState("")
     const [newDescription, setNewDescription] = useState("")
@@ -39,8 +37,42 @@ const UpdateEvent = () => {
     const [newTime, setNewTime] = useState("")
 
 
-    function handleInputChange(event: any) {
+    const db = getFirestore();
+
+    const getData = async () => {
+        const locationArray = location.pathname.split("/");
+        const dataId = locationArray[locationArray.length - 1]
+        const docRef = doc(db, "Events", dataId);
+        const docSnap = await getDoc(docRef);
+        if(docSnap.exists()){
+            console.log(docSnap.data())
+
+            // Update all the states here
+            setNewTitle(docSnap.data().Title)
+            setNewDescription(docSnap.data().Description)
+            setNewLocation(docSnap.data().Location)
+            setNewTime(docSnap.data().Time)
+            setNewDate(docSnap.data().Date)
+
+        } else {
+            console.error("Doc does not exists")
+        }
+        
+    };  
+
+    useEffect(() => {
+       getData();
+    }, [])
+
+
+//  Event handlers for all the state 
+
+
+
+
+function handleInputChange(event: any) {
       const value: string = event.target.value.toString();
+     // console.log(value)
       // Update the state variable based on the input element's name
       switch (event.target.name) {
         case "title":
@@ -62,70 +94,48 @@ const UpdateEvent = () => {
           break;
       }
     }
-    // const [event, setEvent] = useState<Event[]>([]);
 
-  const updateEvent = async () => {
+
+
+//   Form submit handler to update the database
+
+
+const updateEvent = async () => {
     
-
+ 
     
     try {
 
-       // const usersRef = doc(db, "Events",data.data.id);
-       // const event = useFirestoreDocData(usersRef);
 
-       const eventcollection = collection(db, "Events");
-       // const eventDocRef = doc(usersRef,data.data.id);
-       console.log("0")
-       console.log("1")
-       console.log(db)
-       console.log("2")
-       console.log("3")
-       console.log(data.data.id)
-       const eventdoc = doc(eventcollection,data.data.id);
-       console.log("1")
-       console.log(db)
-       console.log("2")
-       console.log(eventdoc)
-       console.log("3")
-       console.log(data.data.id)
-
-       const updateddata ={
+        const updateddata ={
         Title: newTitle,
         Description: newDescription,
         Location: newLocation,
         Date: newDate,
         Time: newTime,
        }
-       console.log(eventdoc)
-       console.log(updateddata)
 
-        await updateDoc(eventdoc, updateddata);
+       const locationArray = location.pathname.split("/");
+       const dataId = locationArray[locationArray.length - 1]
 
+       
+       await setDoc(doc(db, "Events", dataId), updateddata);
+
+
+
+       console.log('Successfully updated');
+
+       
+       history.push('./ViewEvent');
+    //    history.goBack();
         
-        console.log('Document successfully updated!');
       } catch (error) {
         console.error('Error updating document: ', error);
       }
-
-    // try {
-    //   await addDoc(eventCollectionRef, {
-    //     Title: newTitle,
-    //     Description: newDescription,
-    //     Location: newLocation,
-    //     Date: newDate,
-    //     Time: newTime,
-    //   });
-    //   console.log("Event created successfully!");
-    //   // clear form input fields
-    // //   setNewTitle("");
-    // //   setNewDescription("");
-    // //   setNewLocation("");
-    // //   setNewDate("");
-    // //   setNewTime("");
-    // } catch (error) {
-    //   console.error("Error creating event:", error);
-    // }
+ 
   };
+
+
   return (
     <IonPage>
       <HeaderComponent title="AddEditEvent" />
@@ -143,16 +153,16 @@ const UpdateEvent = () => {
               errorText="Invalid title"
               fill="outline"
               name="title"
-              value={data.data.title}
-              onIonChange={handleInputChange}
-            ></IonInput>
+              value={newTitle}
+              onIonChange={handleInputChange} 
+           />
             <IonInput
               label="Description"
               labelPlacement="floating"
               fill="outline"
               placeholder="Description"
               name="description"
-              value={data.data.description}
+              value={newDescription}
               onIonChange={handleInputChange}
             ></IonInput>
             <IonInput
@@ -161,7 +171,7 @@ const UpdateEvent = () => {
               fill="outline"
               placeholder="Location"
               name="location"
-              value={data.data.location}
+              value={newLocation}
               onIonChange={handleInputChange}
             ></IonInput>
             <IonInput
@@ -171,7 +181,7 @@ const UpdateEvent = () => {
               fill="outline"
               placeholder="date"
               name="date"
-              value={data.data.date}
+              value={newDate}
               onIonChange={handleInputChange}
             ></IonInput>
             <IonInput
@@ -181,11 +191,10 @@ const UpdateEvent = () => {
               fill="outline"
               placeholder="time"
               name="time"
-              value={data.data.time}
+              value={newTime}
               onIonChange={handleInputChange}
             ></IonInput>
-            <IonButton expand="full" onClick={updateEvent}>Update</IonButton>
-            {/* <IonText color="danger" style={{ textAlign: 'center' }}>{tt2}</IonText> */}
+            <IonButton expand="full" onClick={updateEvent}>Update</IonButton>  
           </form>
         </div>
       </div>
@@ -194,7 +203,3 @@ const UpdateEvent = () => {
 };
 
 export default UpdateEvent;
-
-function useFirestoreDocData(usersRef: DocumentReference<DocumentData>) {
-    throw new Error("Function not implemented.");
-}

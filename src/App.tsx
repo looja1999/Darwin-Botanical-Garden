@@ -95,7 +95,7 @@ const App: React.FC = () => {
             <Route path="/page/Login/AdminHomePage/ViewPlant" exact={true}>
               <ViewPlant />
             </Route>
-            <Route path="/page/Login/AdminHomePage/UpdateEvent" exact={true}>
+            <Route path="/page/Login/AdminHomePage/UpdateEvent/:id" exact={true}>
               <UpdateEvent />
             </Route>
           </IonRouterOutlet>
