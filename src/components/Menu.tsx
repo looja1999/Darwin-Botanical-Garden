@@ -48,6 +48,12 @@ const appPages: AppPage[] = [
     mdIcon: calendarSharp,
   },
   {
+    title: "Plants",
+    url: "/page/Plants",
+    iosIcon: calendarOutline,
+    mdIcon: calendarSharp,
+  },
+  {
     title: "Tours",
     url: "/page/Tours",
     iosIcon: navigateOutline,

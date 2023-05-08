@@ -15,9 +15,14 @@ import { HeaderComponent } from "../components";
 import styles from "../styles";
 import { addDoc, collection } from "firebase/firestore/lite";
 import { db } from "../firebaseConfig";
+import { useHistory } from "react-router";
 // import './styles.css';
 
 const AddEditEvent = () => {
+
+
+  const history = useHistory();
+
 
     const [newTitle, setNewTitle] = useState("")
     const [newDescription, setNewDescription] = useState("")
@@ -67,6 +72,10 @@ const AddEditEvent = () => {
       setNewLocation("");
       setNewDate("");
       setNewTime("");
+             
+      history.push('./ViewEvent');
+      window.location.reload();
+
     } catch (error) {
       console.error("Error creating event:", error);
     }

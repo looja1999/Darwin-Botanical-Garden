@@ -11,10 +11,13 @@ import AddEditPlant from "./AddEditPlant";
 import ViewEvent from "./ViewEvent";
 import ViewPlant from "./ViewPlant";
 import UpdateEvent from "./UpdateEvent";
+import UpdatePlant from "./UpdatePlant";
+import Plants from "./Plants";
 
 export {
   Home,
   Events,
+  Plants,
   Tours,
   PlantIndex,
   PlantRecognition,
@@ -26,4 +29,6 @@ export {
   ViewEvent,
   ViewPlant,
   UpdateEvent,
+  UpdatePlant,
+  
 };

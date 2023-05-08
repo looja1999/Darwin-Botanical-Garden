@@ -26,6 +26,10 @@ export const navs = [
     url: "/page/Events",
   },
   {
+    title: "Plants",
+    url: "/page/Plants",
+  },
+  {
     title: "Tours",
     url: "/page/Tours",
   },

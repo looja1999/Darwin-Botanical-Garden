@@ -126,8 +126,10 @@ const updateEvent = async () => {
        console.log('Successfully updated');
 
        
-       history.push('./ViewEvent');
-    //    history.goBack();
+       history.push('../ViewEvent');
+       window.location.reload();
+
+      //  history.goBack();
         
       } catch (error) {
         console.error('Error updating document: ', error);
@@ -144,7 +146,7 @@ const updateEvent = async () => {
           className={`h-full w-full mt-[-40px] md:w-[400px] mx-auto ${styles.padding} md:p-0 flex flex-col gap-6 items-center justify-center`}
         >
           <h1 className="font-nunito font-semibold text-xl text-primary">
-            Add Event
+            Update Event
           </h1>
           <form className="w-full flex flex-col gap-4">
             <IonInput

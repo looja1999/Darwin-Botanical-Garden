@@ -45,7 +45,9 @@ import {
   ViewEvent,
   ViewPlant,
   UpdateEvent,
+  UpdatePlant,
 } from "./pages";
+import Plants from "./pages/Plants";
 
 setupIonicReact();
 
@@ -64,6 +66,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/page/Events" exact={true}>
               <Events />
+            </Route>
+            <Route path="/page/Plants" exact={true}>
+              <Plants />
             </Route>
             <Route path="/page/Plant-Index" exact={true}>
               <PlantIndex />
@@ -97,6 +102,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/page/Login/AdminHomePage/UpdateEvent/:id" exact={true}>
               <UpdateEvent />
+            </Route>
+            <Route path="/page/Login/AdminHomePage/UpdatePlant/:id" exact={true}>
+              <UpdatePlant />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>
