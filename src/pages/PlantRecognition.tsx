@@ -75,7 +75,7 @@ const PlantRecognition: React.FC = () => {
     const file = await blobToBase64(url);
 
     const data = {
-      api_key: "WqL4DAbzrWKGr9FfIHxLxXydSwDdct6hZdzP48cKrONBxzT1Y9",
+      api_key: "trQWFju1LGKVKhc2WqivZrIZxGx0rGGEqyQgNrxfb6SmqDnryR",
       images: [file],
       // modifiers docs: https://github.com/flowerchecker/Plant-id-API/wiki/Modifiers
       modifiers: ["crops_fast", "similar_images"],
@@ -207,11 +207,11 @@ const PlantRecognition: React.FC = () => {
                 {!isPlant && (
                   <div className="flex items-center justify-center ">
                     <p className="text-xl flex flex-col items-center">
-                      <IonIcon
+                      {/* <IonIcon
                         icon={closeCircle}
                         color="danger "
                         className="mb-2 text-5xl"
-                      />
+                      /> */}
                       The plant could not be recognized.
                     </p>
                   </div>
